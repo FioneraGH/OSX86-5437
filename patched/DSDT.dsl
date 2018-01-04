@@ -15735,6 +15735,14 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
             }
         }
     }
+    
+    Scope (_GPE)
+    {
+        Method (_L0A, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        {
+            NEVT ()
+        }
+    }
 
     Method (OPTS, 1, NotSerialized)
     {
