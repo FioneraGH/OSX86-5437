@@ -13812,6 +13812,302 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
         }
     }
 
+    Scope (_GPE)
+    {
+        Method (_L69, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        {
+            If (LAnd (LEqual (RP1D, Zero), LEqual (\_SB.PCI0.RP01.RPAV, One)))
+            {
+                \_SB.PCI0.RP01.HPME ()
+                Notify (\_SB.PCI0.RP01, 0x02)
+            }
+
+            If (LAnd (LEqual (RP2D, Zero), LEqual (\_SB.PCI0.RP02.RPAV, One)))
+            {
+                \_SB.PCI0.RP02.HPME ()
+                Notify (\_SB.PCI0.RP02, 0x02)
+            }
+
+            If (LAnd (LEqual (RP3D, Zero), LEqual (\_SB.PCI0.RP03.RPAV, One)))
+            {
+                \_SB.PCI0.RP03.HPME ()
+                Notify (\_SB.PCI0.RP03, 0x02)
+            }
+
+            If (LAnd (LEqual (RP4D, Zero), LEqual (\_SB.PCI0.RP04.RPAV, One)))
+            {
+                \_SB.PCI0.RP04.HPME ()
+                Notify (\_SB.PCI0.RP04, 0x02)
+            }
+
+            If (LAnd (LEqual (RP5D, Zero), LEqual (\_SB.PCI0.RP05.RPAV, One)))
+            {
+                \_SB.PCI0.RP05.HPME ()
+                Notify (\_SB.PCI0.RP05, 0x02)
+            }
+
+            If (LAnd (LEqual (RP6D, Zero), LEqual (\_SB.PCI0.RP06.RPAV, One)))
+            {
+                \_SB.PCI0.RP06.HPME ()
+                Notify (\_SB.PCI0.RP06, 0x02)
+            }
+
+            If (LAnd (LEqual (RP7D, Zero), LEqual (\_SB.PCI0.RP07.RPAV, One)))
+            {
+                \_SB.PCI0.RP07.HPME ()
+                Notify (\_SB.PCI0.RP07, 0x02)
+            }
+
+            If (LAnd (LEqual (RP8D, Zero), LEqual (\_SB.PCI0.RP08.RPAV, One)))
+            {
+                \_SB.PCI0.RP08.HPME ()
+                Notify (\_SB.PCI0.RP08, 0x02)
+            }
+
+            If (LEqual (\_SB.PCI0.D1F0, One))
+            {
+                \_SB.PCI0.PEG0.HPME ()
+                Notify (\_SB.PCI0.PEG0, 0x02)
+                Notify (\_SB.PCI0.PEG0.PEGP, 0x02)
+            }
+
+            If (LEqual (\_SB.PCI0.D1F1, One))
+            {
+                \_SB.PCI0.PEG1.HPME ()
+                Notify (\_SB.PCI0.PEG1, 0x02)
+            }
+
+            If (LEqual (\_SB.PCI0.D1F2, One))
+            {
+                \_SB.PCI0.PEG2.HPME ()
+                Notify (\_SB.PCI0.PEG2, 0x02)
+            }
+        }
+
+        Method (_L6D, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        {
+            If (LAnd (\_SB.PCI0.EHC1.PMEE, \_SB.PCI0.EHC1.PMES))
+            {
+                Notify (\_SB.PCI0.EHC1, 0x02)
+            }
+
+            If (LAnd (\_SB.PCI0.EHC2.PMEE, \_SB.PCI0.EHC2.PMES))
+            {
+                Notify (\_SB.PCI0.EHC2, 0x02)
+            }
+
+            If (LAnd (\_SB.PCI0.XHC.PMEE, \_SB.PCI0.XHC.PMES))
+            {
+                Notify (\_SB.PCI0.XHC, 0x02)
+            }
+
+            If (LAnd (\_SB.PCI0.HDEF.PMEE, \_SB.PCI0.HDEF.PMES))
+            {
+                Notify (\_SB.PCI0.HDEF, 0x02)
+            }
+        }
+
+        Method (_L61, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        {
+            Add (L01C, One, L01C)
+            P8XH (Zero, One)
+            P8XH (One, L01C)
+            If (LAnd (LEqual (RP1D, Zero), \_SB.PCI0.RP01.HPSX))
+            {
+                Sleep (0x64)
+                If (\_SB.PCI0.RP01.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP01.PDCX)
+                    Store (One, \_SB.PCI0.RP01.HPSX)
+                    If (LNot (\_SB.PCI0.RP01.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP01.L0SE)
+                    }
+
+                    Notify (\_SB.PCI0.RP01, Zero)
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP01.HPSX)
+                }
+            }
+
+            If (LAnd (LEqual (RP2D, Zero), \_SB.PCI0.RP02.HPSX))
+            {
+                Sleep (0x64)
+                If (\_SB.PCI0.RP02.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP02.PDCX)
+                    Store (One, \_SB.PCI0.RP02.HPSX)
+                    If (LNot (\_SB.PCI0.RP02.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP02.L0SE)
+                    }
+
+                    Notify (\_SB.PCI0.RP02, Zero)
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP02.HPSX)
+                }
+            }
+
+            If (LAnd (LEqual (RP3D, Zero), \_SB.PCI0.RP03.HPSX))
+            {
+                If (LAnd (LNotEqual (BID, BICO), LNotEqual (BID, BICC)))
+                {
+                    Sleep (0x64)
+                }
+
+                If (\_SB.PCI0.RP03.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP03.PDCX)
+                    Store (One, \_SB.PCI0.RP03.HPSX)
+                    If (LNot (\_SB.PCI0.RP03.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP03.L0SE)
+                    }
+
+                    If (LAnd (LNotEqual (BID, BICO), LNotEqual (BID, BICC)))
+                    {
+                        Notify (\_SB.PCI0.RP03, Zero)
+                    }
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP03.HPSX)
+                }
+            }
+
+            If (LAnd (LEqual (RP4D, Zero), \_SB.PCI0.RP04.HPSX))
+            {
+                Sleep (0x64)
+                If (\_SB.PCI0.RP04.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP04.PDCX)
+                    Store (One, \_SB.PCI0.RP04.HPSX)
+                    If (LNot (\_SB.PCI0.RP04.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP04.L0SE)
+                    }
+
+                    Notify (\_SB.PCI0.RP04, Zero)
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP04.HPSX)
+                }
+            }
+
+            If (LAnd (LEqual (RP5D, Zero), \_SB.PCI0.RP05.HPSX))
+            {
+                If (LAnd (LNotEqual (BID, BICO), LNotEqual (BID, BICC)))
+                {
+                    Sleep (0x64)
+                }
+
+                If (\_SB.PCI0.RP05.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP05.PDCX)
+                    Store (One, \_SB.PCI0.RP05.HPSX)
+                    If (LNot (\_SB.PCI0.RP05.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP05.L0SE)
+                    }
+
+                    If (LAnd (LNotEqual (BID, BICO), LNotEqual (BID, BICC)))
+                    {
+                        Notify (\_SB.PCI0.RP05, Zero)
+                    }
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP05.HPSX)
+                }
+            }
+
+            If (LAnd (LEqual (RP6D, Zero), \_SB.PCI0.RP06.HPSX))
+            {
+                Sleep (0x64)
+                If (\_SB.PCI0.RP06.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP06.PDCX)
+                    Store (One, \_SB.PCI0.RP06.HPSX)
+                    If (LNot (\_SB.PCI0.RP06.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP06.L0SE)
+                    }
+
+                    Notify (\_SB.PCI0.RP06, Zero)
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP06.HPSX)
+                }
+            }
+
+            If (LAnd (LEqual (RP7D, Zero), \_SB.PCI0.RP07.HPSX))
+            {
+                Sleep (0x64)
+                If (\_SB.PCI0.RP07.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP07.PDCX)
+                    Store (One, \_SB.PCI0.RP07.HPSX)
+                    If (LNot (\_SB.PCI0.RP07.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP07.L0SE)
+                    }
+
+                    If (LEqual (PFLV, FDTP))
+                    {
+                        Notify (\_SB.PCI0.RP07, Zero)
+                    }
+                    Else
+                    {
+                    }
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP07.HPSX)
+                }
+            }
+
+            If (LAnd (LEqual (RP8D, Zero), \_SB.PCI0.RP08.HPSX))
+            {
+                Sleep (0x64)
+                If (\_SB.PCI0.RP08.PDCX)
+                {
+                    Store (One, \_SB.PCI0.RP08.PDCX)
+                    Store (One, \_SB.PCI0.RP08.HPSX)
+                    If (LNot (\_SB.PCI0.RP08.PDSX))
+                    {
+                        Store (Zero, \_SB.PCI0.RP08.L0SE)
+                    }
+
+                    If (LEqual (PFLV, FDTP))
+                    {
+                        Notify (\_SB.PCI0.RP08, Zero)
+                    }
+                    Else
+                    {
+                    }
+                }
+                Else
+                {
+                    Store (One, \_SB.PCI0.RP08.HPSX)
+                }
+            }
+        }
+
+        Method (_L66, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        {
+            If (LAnd (\_SB.PCI0.GFX0.GSSE, LNot (GSMI)))
+            {
+                \_SB.PCI0.GFX0.GSCI ()
+            }
+        }
+    }
+
     Device (WCAM)
     {
         Name (_ADR, 0x05)  // _ADR: Address
