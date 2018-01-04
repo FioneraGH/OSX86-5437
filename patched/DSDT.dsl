@@ -13950,22 +13950,6 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
         }
     }
 
-    Scope (_GPE)
-    {
-        Method (_L11, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
-        {
-            If (LEqual (PFLV, FDTP))
-            {
-                Return (Zero)
-            }
-
-            Store (Zero, GE17)
-            \_SB.WTGP (0x55, One)
-            Notify (\_SB.PCI0.SAT0, 0x81)
-            Return (Zero)
-        }
-    }
-
     Name (MISC, Buffer (0x07)
     {
          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00       
@@ -15453,14 +15437,6 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
                     Notify (\_SB.PCI0.GFX0.DD1F, 0x87)
                 }
             }
-        }
-    }
-
-    Scope (_GPE)
-    {
-        Method (_L0A, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
-        {
-            NEVT ()
         }
     }
 
