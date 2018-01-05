@@ -10,3 +10,4 @@ This repo have origin acpi files including dsdt/ssdts, of cause the patched
 file will appear in patched folder. For addons and plugins will be added in the
 future perhaps.
 
+> PS: .aml file maybe not be updated ontime.
