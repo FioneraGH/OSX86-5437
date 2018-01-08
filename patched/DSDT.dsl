@@ -16940,11 +16940,5 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
     Method (PINI, 0, NotSerialized)
     {
     }
-    OperationRegion (PMRS, SystemIO, 0x1830, One)
-    Field (PMRS, ByteAcc, NoLock, Preserve)
-    {
-        , 4,
-        SLPE, 1
-    }
 }
 
