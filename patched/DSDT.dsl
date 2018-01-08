@@ -12437,6 +12437,7 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
 
     Method (_PTS, 1, NotSerialized)  // _PTS: Prepare To Sleep
     {
+      If (LNotEqual(Arg0,5)) {
         Store (Zero, P80D)
         P8XH (Zero, Arg0)
         PTS (Arg0)
@@ -12463,6 +12464,8 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
                 Store (One, GP27)
             }
         }
+      }
+
     }
 
     Method (_WAK, 1, Serialized)  // _WAK: Wake
