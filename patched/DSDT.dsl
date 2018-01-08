@@ -12598,99 +12598,9 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
 
     Method (PNOT, 0, Serialized)
     {
-        If (CondRefOf (\_SB.PCCD.PENB))
-        {
-            Store (0x82, Local0)
-        }
-        Else
-        {
-            Store (0x80, Local0)
-        }
+        
+        // nothing
 
-        If (LGreater (TCNT, One))
-        {
-            If (And (PDC0, 0x08))
-            {
-                Notify (\_PR.CPU0, Local0)
-                If (And (PDC0, 0x10))
-                {
-                    Notify (\_PR.CPU0, 0x81)
-                }
-            }
-
-            If (And (PDC1, 0x08))
-            {
-                Notify (\_PR.CPU1, Local0)
-                If (And (PDC1, 0x10))
-                {
-                    Notify (\_PR.CPU1, 0x81)
-                }
-            }
-
-            If (And (PDC2, 0x08))
-            {
-                Notify (\_PR.CPU2, Local0)
-                If (And (PDC2, 0x10))
-                {
-                    Notify (\_PR.CPU2, 0x81)
-                }
-            }
-
-            If (And (PDC3, 0x08))
-            {
-                Notify (\_PR.CPU3, Local0)
-                If (And (PDC3, 0x10))
-                {
-                    Notify (\_PR.CPU3, 0x81)
-                }
-            }
-
-            If (And (PDC4, 0x08))
-            {
-                Notify (\_PR.CPU4, Local0)
-                If (And (PDC4, 0x10))
-                {
-                    Notify (\_PR.CPU4, 0x81)
-                }
-            }
-
-            If (And (PDC5, 0x08))
-            {
-                Notify (\_PR.CPU5, Local0)
-                If (And (PDC5, 0x10))
-                {
-                    Notify (\_PR.CPU5, 0x81)
-                }
-            }
-
-            If (And (PDC6, 0x08))
-            {
-                Notify (\_PR.CPU6, Local0)
-                If (And (PDC6, 0x10))
-                {
-                    Notify (\_PR.CPU6, 0x81)
-                }
-            }
-
-            If (And (PDC7, 0x08))
-            {
-                Notify (\_PR.CPU7, Local0)
-                If (And (PDC7, 0x10))
-                {
-                    Notify (\_PR.CPU7, 0x81)
-                }
-            }
-        }
-        Else
-        {
-            Notify (\_PR.CPU0, Local0)
-            Notify (\_PR.CPU0, 0x81)
-        }
-
-        If (LEqual (DPTF, One))
-        {
-            Notify (\_SB.IETM, 0x86)
-        }
     }
 
     OperationRegion (MBAR, SystemMemory, Add (ShiftLeft (\_SB.PCI0.MHBR, 0x0F), 0x5000), 0x1000)
@@ -16287,8 +16197,9 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
     {
         Method (WMIA, 1, NotSerialized)
         {
-            \_SB.AMW0.WMI4 (Arg0)
-            Notify (\_SB.AMW0, 0xD0)
+            
+            // nothing
+
         }
     }
 
