@@ -64,9 +64,9 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
     External (_SB_.PCI0.GFX0.STAT, FieldUnitObj)
     External (_SB_.PCI0.GFX0.TCHE, FieldUnitObj)
     External (_SB_.PCI0.PAUD.PUAM, MethodObj)    // Warning: Unknown method, guessing 0 arguments
-    External (_SB_.PCI0.PEG0, UnknownObj)
+    
     External (_SB_.PCI0.PEG0.HPME, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP, UnknownObj)
+    
     External (_SB_.PCI0.PEG0.PEGP.EPON, MethodObj)    // Warning: Unknown method, guessing 0 arguments
     External (_SB_.PCI0.PEG1, UnknownObj)
     External (_SB_.PCI0.PEG1.HPME, MethodObj)    // 0 Arguments
@@ -12388,11 +12388,6 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
 
     Method (ADBG, 1, Serialized)
     {
-        If (CondRefOf (MDBG))
-        {
-            Return (MDBG)
-        }
-
         Return (Zero)
     }
 
@@ -13869,7 +13864,7 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
             {
                 \_SB.PCI0.PEG0.HPME ()
                 Notify (\_SB.PCI0.PEG0, 0x02)
-                Notify (\_SB.PCI0.PEG0.PEGP, 0x02)
+                
             }
 
             If (LEqual (\_SB.PCI0.D1F1, One))
