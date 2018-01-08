@@ -24,4 +24,7 @@ DSDT patched list:
 
 1. inject audio info of layout-id-3
 
+1. various fix: build-in usb/IRQ/SMBUS/RTC/shutdown v2/HPET/AC Adapter (can be
+   replaced by hotpatch later)
+
 > PS: .aml file maybe not be updated ontime.
