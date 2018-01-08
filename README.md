@@ -10,4 +10,12 @@ This repo have origin acpi files including dsdt/ssdts, of cause the patched
 file will appear in patched folder. For addons and plugins will be added in the
 future perhaps.
 
+DSDT patched list:
+
+1. EC.ECNV which was removed when _INT performs _OFF method has been invoked again
+
+1. "instant wake" patch of 0x0D 
+
+1. remove _GPE scope _L11 method logic for normal intercept about cpu
+
 > PS: .aml file maybe not be updated ontime.
