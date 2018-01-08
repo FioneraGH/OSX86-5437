@@ -18,4 +18,10 @@ DSDT patched list:
 
 1. remove _GPE scope _L11 method logic for normal intercept about cpu
 
+1. remove some definitionblock for syntax error
+
+1. remove some bad block  e.g. WMIA/PNOT
+
+1. inject audio info of layout-id-3
+
 > PS: .aml file maybe not be updated ontime.
