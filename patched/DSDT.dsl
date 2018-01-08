@@ -2638,11 +2638,6 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
                     {
                         Store (One, RPAV)
                     }
-                    // added to turn nvidia off
-                    If (LAnd (LEqual (Arg0, 3), LEqual (Arg1, 1)))
-                    {
-                        \_SB.PCI0.LPCB.EC.ECNV (0x02)
-                    }
                 }
 
                 Method (HPME, 0, Serialized)
@@ -3613,6 +3608,12 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
                     If (LAnd (LEqual (Arg0, 0x02), LEqual (Arg1, One)))
                     {
                         Store (One, RPAV)
+                    }
+                    
+                    // added to turn nvidia off
+                    If (LAnd (LEqual (Arg0, 3), LEqual (Arg1, 1)))
+                    {
+                        \_SB.PCI0.LPCB.EC.ECNV (0x02)
                     }
                 }
 
