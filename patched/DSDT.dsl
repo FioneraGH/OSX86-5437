@@ -15308,6 +15308,7 @@ DefinitionBlock ("", "DSDT", 2, "DELL", "WN09", 0x00000000)
             {
                 Return (0x0F)
             }
+            Name (_PRW, Package() { 0x18, 0x03 })
         }
     }
 
