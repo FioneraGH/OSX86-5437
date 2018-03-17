@@ -22,8 +22,6 @@ DSDT patched list:
 
 1. remove some bad block  e.g. WMIA/PNOT
 
-1. inject audio info of layout-id-3
-
 1. various fix: build-in usb/IRQ/SMBUS/RTC/shutdown v2/HPET/AC Adapter (can be
    replaced by hotpatch later)
 
